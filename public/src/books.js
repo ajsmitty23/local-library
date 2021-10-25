@@ -1,3 +1,5 @@
+const { findAccountById } = require("./accounts");
+
 function findAuthorById(authors, id) {
   return authors.find((author) => author.id === id);
 }
@@ -36,7 +38,8 @@ function getBorrowersForBook(book, accounts) {
 
   const borrowers = borrows.map(({ id, returned })=> {
     // find account that matches the borrower's ID
-    const account = accounts.find(account => account.id === id);
+    //THIS IS MY HELPER FUNCTION------------------
+    const account = findAccountById(accounts, id);
 
     // return the matching account, along with the `returned` info
     return {
